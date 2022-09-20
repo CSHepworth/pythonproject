@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title>Yard Wizards Registration</title>
+{% endblock %}
+
+
+{% block body %}
+<form action="/register_employee" method="post">
+    <label for="first_name">First Name:</label>
+    <input type="text" name="first_name">
+    <label for="last_name">Last Name:</label>
+    <input type="text" name="last_name">
+    <label for="dob">Date of Birth:</label>
+    <input type="date" name="dob">
+    <label for="applicator_id">Applicator ID:</label>
+    <input type="text" name="applicator_id">
+    <label for="email">Email:</label>
+    <input type="email" name="email">
+    <label for="password">Password:</label>
+    <input type="password" name="password">
+    <label for="confirm">Confirm Password:</label>
+    <input type="password" name="confirm">
+    <input type="submit" value="Register">
+</form>
+{% endblock %}
