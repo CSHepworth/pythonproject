@@ -7,5 +7,12 @@
 
 
 {% block body %}
-<h1>Welcome</h1>
+<h1>Welcome {{employee.first_name}} {{employee.last_name}}</h1>
+    {% if employee.admin == 1 %}
+        <div>
+            <a href="/add_customer">Add Customer</a>
+            <a href="">Add Invoice</a>
+        </div>
+    {% endif %}
+<a href="/">Logout</a>
 {% endblock %}

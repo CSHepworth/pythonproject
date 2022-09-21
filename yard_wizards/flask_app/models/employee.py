@@ -5,23 +5,25 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 class Employee:
     
-    db = "scorched_earth_scehma"
+    db = "yard_wizard_schema"
     def __init__(self, data):
         self.id = data['id']
         self.first_name = data['first_name']
         self.last_name = data['last_name']
-        self.dob = data['dob']
+        self.applicator_id = data['applicator_id']
         self.email = data['email']
         self.password = data['password']
-        self.applicator_id = data['applicator_id']
+        self.dob = data['dob']
         self.date_hired = data['date_hired']
         self.date_terminated = data['date_terminated']
+        self.admin = data['admin']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        
 
     @classmethod
     def save(cls, data):
-        query = "INSERT INTO employees (first_name, last_name, dob, email, password, applicator_id, date_hired, created_at, updated_at) VALUES (%(first_name)s, %(last_name)s, %(dob)s, %(email)s, %(password)s, %(applicator_id)s, NOW(), NOW(), NOW());"
+        query = "INSERT INTO employees (first_name, last_name, applicator_id, email, password, dob, date_hired, admin, created_at, updated_at) VALUES (%(first_name)s, %(last_name)s, %(applicator_id)s, %(email)s, %(password)s, %(dob)s, NOW(), 0, NOW(), NOW());"
         return connectToMySQL(cls.db).query_db(query, data)
 
     @classmethod
@@ -31,7 +33,7 @@ class Employee:
         if not result:
             return False
         else:
-            return cls(resutl[0])
+            return cls(result[0])
 
     @classmethod
     def get_by_id(cls, data):
@@ -56,7 +58,7 @@ class Employee:
         if len(employee['last_name']) < 2:
             is_valid = False
             flash("Last Name is too short, must be at least 2 characters")
-        if len(employee['applicator_id']) < 12:
+        if len(employee['applicator_id']) < 10:
             is_valid = False
             flash("Please enter a valid applicator id")
         if not EMAIL_REGEX.match(employee['email']):

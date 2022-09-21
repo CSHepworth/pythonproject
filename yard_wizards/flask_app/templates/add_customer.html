@@ -1,0 +1,30 @@
+{% extends 'base2.html' %}
+
+
+{% block head %}
+<title>Add Customer</title>
+{% endblock %}
+
+
+{% block body %}
+<h1>Add Customer</h1>
+<form action="/create_customer" method="post">
+    <label for="first_name">First Name:</label>
+    <input type="text" name="first_name">
+    <label for="last_name">Last Name:</label>
+    <input type="text" name="last_name">
+    <label for="address_line1">Address Line 1:</label>
+    <input type="text" name="address_line1">
+    <label for="address_line2">Address Line 2:</label>
+    <input type="text" name="address_line2">
+    <label for="city">City:</label>
+    <input type="text" name="city">
+    <label for="state">State:</label>
+    <input type="text" name="state">
+    <label for="zip">Zip Code:</label>
+    <input type="text" name="zip">
+    <label for="lawn_sqft">Lawn Square Feet:</label>
+    <input type="number" name="lawn_sqft">
+    <input type="submit" value="Add Customer">
+</form>
+{% endblock %}

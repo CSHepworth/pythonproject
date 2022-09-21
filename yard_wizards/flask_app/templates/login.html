@@ -7,6 +7,16 @@
 
 
 {% block body %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div>
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endwith %}
+    
 <form action="/login_employee" method="post">
     <label for="email">Email:</label>
     <input type="email" name="email">
@@ -14,5 +24,5 @@
     <input type="password" name="password">
     <input type="submit" value="Login">
 </form>
-<p>No Account? <a href="/registration">Register</a></p>
+<p>No Account? Register <a href="/registration">Here</a></p>
 {% endblock %}
