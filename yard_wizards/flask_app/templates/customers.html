@@ -1,0 +1,40 @@
+{% extends 'base2.html' %}
+
+
+{% block head %}
+<title>Customers</title>
+{% endblock %}
+
+
+{% block body %}
+<div class="customerMainDiv">
+    <h1>Customers</h1>
+    <table class="customerTable">
+        <thead>
+            <tr>
+                <th class="customerTableTh">Name</th>
+                <th class="customerTableTh">Address</th>
+                <th class="customerTableTh">Lawn Square Feet</th>
+                {% if employee.admin == 1 %}
+                    <th class="customerTableTh">Actions</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+                <tr>
+                    <td class="customerTableTd">{{customer.first_name}} {{customer.last_name}}</td>
+                    <td class="customerTableTd">{{customer.address_line1}} {{customer.address_line2}} {{customer.city}}, {{customer.state}} {{customer.zip}}</td>
+                    <td class="customerTableTd">{{customer.lawn_sqft}}</td>
+                    {% if employee.admin == 1 %}
+                        <td class="customerTableTd"><a href="">Edit</a></td>                        
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="customerExportCSVLinkDiv">
+        <a href="/export_csv" class="customerExportCSVLinkText">Create CSV</a>
+    </div>
+</div>
+{% endblock %}

@@ -4,10 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     {% block head %}{% endblock %}
     <title>BASE2.HTML</title>
 </head>
 <body>
+    <div class="base2Header">
+        <div class="base2InnerHeader">
+            <div>
+                <a href="/dashboard" class="base2InnerHeaderLogo">Yard Wizard</a>
+            </div>
+            <div class="base2InnerHeaderLinks">
+                {% if employee.admin == 1 %}
+                    <a class="base2InnerHeaderLinksText" href="/add_customer">Add Customer</a>
+                    <a class="base2InnerHeaderLinksText" href="">Add Invoice</a>
+                {% endif %}
+                <a class="base2InnerHeaderLinksText" href="/logout">Logout</a>
+            </div>
+        </div>
+    </div>
 {% block body %}{% endblock %}    
 </body>
 </html>

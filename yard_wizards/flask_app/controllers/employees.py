@@ -2,14 +2,19 @@ from flask_app import app
 from flask import render_template, redirect, request, session, flash
 import re
 from flask_app.models.employee import Employee
+from flask_app.models.customer import Customer
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
 @app.route('/')
 def index():
-    session.clear()
     print(session)
     return redirect('/login')
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/')
 
 @app.route('/login')
 def login_page():
@@ -72,5 +77,6 @@ def dashboard():
     }
     print(session)
     employee = Employee.get_by_id(data)
-    return render_template('dashboard.html', employee = employee)
+    customers = Customer.get_all()
+    return render_template('dashboard.html', employee = employee, customers = customers)
    

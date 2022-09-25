@@ -7,22 +7,27 @@
 
 
 {% block body %}
-{% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <div>
-        {% for message in messages %}
-        <p>{{message}}</p>
-        {% endfor %}
-    </div>
-    {% endif %}
-{% endwith %}
-    
-<form action="/login_employee" method="post">
-    <label for="email">Email:</label>
-    <input type="email" name="email">
-    <label for="password">Password:</label>
-    <input type="password" name="password">
-    <input type="submit" value="Login">
-</form>
-<p>No Account? Register <a href="/registration">Here</a></p>
+
+<div class="loginMainDiv">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div>
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <h1 style="text-align: center;">Welcome to Yard Wizard</h1>
+    <form action="/login_employee" method="post" class="loginForm">
+        <label for="email">Email:</label>
+        <input type="email" name="email" class="loginFormInput">
+        <label for="password">Password:</label>
+        <input type="password" name="password" class="loginFormInput">
+        <div class="loginFormButtonDiv">
+            <input type="submit" value="Login" class="loginFormButton">
+        </div>
+    </form>
+    <p>No Account? <a href="/registration" class="loginRegisterLinkText">Register Here</a></p>
+</div>
 {% endblock %}

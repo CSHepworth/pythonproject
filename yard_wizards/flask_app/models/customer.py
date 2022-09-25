@@ -40,7 +40,7 @@ class Customer:
         customers = []
         for customer in results:
             customers.append(cls(customer))
-        return cls(result[0])
+        return customers
 
     @classmethod
     def update(cls, data):

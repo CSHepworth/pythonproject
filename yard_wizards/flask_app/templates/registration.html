@@ -7,21 +7,27 @@
 
 
 {% block body %}
-<form action="/register_employee" method="post">
-    <label for="first_name">First Name:</label>
-    <input type="text" name="first_name">
-    <label for="last_name">Last Name:</label>
-    <input type="text" name="last_name">
-    <label for="dob">Date of Birth:</label>
-    <input type="date" name="dob">
-    <label for="applicator_id">Applicator ID:</label>
-    <input type="text" name="applicator_id">
-    <label for="email">Email:</label>
-    <input type="email" name="email">
-    <label for="password">Password:</label>
-    <input type="password" name="password">
-    <label for="confirm">Confirm Password:</label>
-    <input type="password" name="confirm">
-    <input type="submit" value="Register">
-</form>
+<div class="loginMainDiv">
+    <h1 style="text-align: center;">Register Employee</h1>
+    <form action="/register_employee" method="post" class="loginForm">
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name" class="loginFormInput">
+        <label for="last_name">Last Name:</label>
+        <input type="text" name="last_name" class="loginFormInput">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" name="dob" class="loginFormInput">
+        <label for="applicator_id">Applicator ID:</label>
+        <input type="text" name="applicator_id" class="loginFormInput">
+        <label for="email">Email:</label>
+        <input type="email" name="email" class="loginFormInput">
+        <label for="password">Password:</label>
+        <input type="password" name="password" class="loginFormInput">
+        <label for="confirm">Confirm Password:</label>
+        <input type="password" name="confirm" class="loginFormInput">
+        <div class="loginFormButtonDiv">
+            <input type="submit" value="Register" class="loginFormButton">
+        </div>
+        <p><a href="/" class="loginRegisterLinkText">Return to login</a></p>
+    </form>
+</div>
 {% endblock %}
